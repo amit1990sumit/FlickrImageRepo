@@ -45,17 +45,26 @@ static NSString * const reuseIdentifier = @"ImageCell";
     
     if (scrollOffset + scrollViewHeight == scrollContentSizeHeight && self.currentPage < self.totalPages)
     {
-        [self callFlickrSearchServiceWithString:self.txtSearch.text andPageNo:self.currentPage+1];
+        [self loadMoreItem];
     }
-    
+}
+-(void)loadMoreItem{
+    __weak __typeof(self) weakSelf = self;
+    [self.indicator startAnimating];
+    [self callFlickrSearchServiceWithString:self.txtSearch.text andPageNo:self.currentPage+1 withCompletionBlock:^{
+        [weakSelf.indicator stopAnimating];
+    }];
 }
 
 -(void)textFieldShouldReturn{
     __weak __typeof(self) weakSelf = self;
     self.txtSearch.textFieldShouldReturnBlock = ^(UITextField *textField) {
+        [weakSelf.indicator startAnimating];
         [weakSelf.txtSearch endEditing:YES];
         weakSelf.collectionArray = [[NSMutableArray alloc] init];
-        [weakSelf callFlickrSearchServiceWithString:textField.text andPageNo:1];
+        [weakSelf callFlickrSearchServiceWithString:textField.text andPageNo:1 withCompletionBlock:^{
+            [weakSelf.indicator stopAnimating];
+        }];
     };
 }
 

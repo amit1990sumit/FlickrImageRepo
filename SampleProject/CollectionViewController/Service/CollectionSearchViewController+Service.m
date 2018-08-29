@@ -12,7 +12,7 @@
 
 @implementation CollectionSearchViewController(Service)
 
--(void)callFlickrSearchServiceWithString:(NSString*)strSearch andPageNo:(NSInteger)page{
+-(void)callFlickrSearchServiceWithString:(NSString*)strSearch andPageNo:(NSInteger)page withCompletionBlock:(NetworkCallCompleted)completed{
     __weak __typeof(self) weakSelf = self;
     [[ImageServieManager sharedInstance] callSearchAPI:strSearch andPageNo:page :^(FlickrPages *flickrPages) {
         [weakSelf.collectionArray addObjectsFromArray:flickrPages.photosItemArray];
@@ -20,7 +20,11 @@
         weakSelf.totalPages = flickrPages.totalPageAvailable;
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakSelf.collectionView reloadData];
+            if(completed){
+                completed();
+            }
         });
+        
     }];
 }
 

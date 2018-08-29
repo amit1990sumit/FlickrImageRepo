@@ -36,9 +36,13 @@
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ONm-u2-aG3">
                             <size key="itemSize" width="138" height="150"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="50" height="50"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
+                        <activityIndicatorView key="backgroundView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" id="UCO-zp-v80">
+                            <rect key="frame" x="0.0" y="-64" width="375" height="667"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </activityIndicatorView>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCell" id="vLd-gK-SCu" customClass="ImageCollectionCell">
                                 <rect key="frame" x="0.0" y="0.0" width="138" height="150"/>
@@ -64,22 +68,6 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="refresh" id="U0Y-oM-HVm">
-                            <rect key="frame" x="0.0" y="150" width="375" height="50"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <subviews>
-                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="6jf-73-4gg">
-                                    <rect key="frame" x="177" y="15" width="20" height="20"/>
-                                    <color key="color" red="1" green="0.1369717503" blue="0.80711619010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </activityIndicatorView>
-                            </subviews>
-                            <constraints>
-                                <constraint firstAttribute="bottom" secondItem="6jf-73-4gg" secondAttribute="bottom" constant="15" id="O7X-9G-kq7"/>
-                                <constraint firstItem="6jf-73-4gg" firstAttribute="leading" secondItem="U0Y-oM-HVm" secondAttribute="leading" constant="177" id="Ufl-5y-KDC"/>
-                                <constraint firstAttribute="trailing" secondItem="6jf-73-4gg" secondAttribute="trailing" constant="178" id="tny-LU-1uy"/>
-                                <constraint firstItem="6jf-73-4gg" firstAttribute="top" secondItem="U0Y-oM-HVm" secondAttribute="top" constant="15" id="wM5-cQ-ixt"/>
-                            </constraints>
-                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="BYZ-38-t0r" id="17a-CD-Lx1"/>
                             <outlet property="delegate" destination="BYZ-38-t0r" id="jUS-70-VXv"/>
@@ -96,6 +84,7 @@
                         </textField>
                     </navigationItem>
                     <connections>
+                        <outlet property="indicator" destination="UCO-zp-v80" id="IVK-Wp-Xwe"/>
                         <outlet property="txtSearch" destination="dGW-dd-krm" id="ZTu-Ca-CQT"/>
                     </connections>
                 </viewController>

@@ -261,11 +261,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SampleProject/CollectionViewController/CollectionViewDelegate/CollectionSearchViewController+CollectionViewDelegate.m"
-            timestampString = "557226530.249241"
+            timestampString = "557228568.124084"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "-textFieldShouldReturn"
             landmarkType = "7">
          </BreakpointContent>
@@ -293,7 +293,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SampleProject/CollectionViewController/CollectionViewDelegate/CollectionSearchViewController+CollectionViewDelegate.m"
-            timestampString = "557226530.249679"
+            timestampString = "557228568.124712"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "29"

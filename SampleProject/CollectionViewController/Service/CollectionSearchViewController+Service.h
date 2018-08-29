@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CollectionSearchViewController.h"
+typedef void(^NetworkCallCompleted)(void);
 @interface CollectionSearchViewController(Service)
--(void)callFlickrSearchServiceWithString:(NSString*)strSearch andPageNo:(NSInteger)page;
+-(void)callFlickrSearchServiceWithString:(NSString*)strSearch andPageNo:(NSInteger)page withCompletionBlock:(NetworkCallCompleted)completed;
 @end
