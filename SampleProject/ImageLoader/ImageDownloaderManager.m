@@ -30,24 +30,12 @@
     self.networkQueue.maxConcurrentOperationCount = 3;
 }
 -(void)downloadImageWithURL:(NSURL*)url withCompeltionBlock:(ImageCompletionBlockFinish)completedBlock{
-    UIImage *image = nil;
-    if(url != nil){
-        image = [_imageCache objectForKey:[url absoluteString]];
-    }
-    if (image) {
-        if(completedBlock){
-           completedBlock(image,nil,url);
-        }
-    }
-    else{
         ImageDownloaderOperation *operation = [[ImageDownloaderOperation alloc]initWithURL:url andImageCache:_imageCache withCompletionBlock:^(UIImage *image, NSError *error, NSURL *imageURL) {
             if (completedBlock) {
                 completedBlock(image,error,imageURL);
             }
         }];
         [_networkQueue addOperation:operation];
-    }
-    
 }
 
 @end

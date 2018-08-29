@@ -58,6 +58,17 @@
     }
     [self willChangeValueForKey:@"isExecuting"];
     self._isExecuting = YES;
+    UIImage *image = nil;
+    if(_imageURL != nil){
+        image = [_imageCache objectForKey:[_imageURL absoluteString]];
+    }
+    if (image) {
+        if(self->_imageCompletionBlock){
+            self->_imageCompletionBlock(image,nil,self->_imageURL);
+        }
+        [self requestFinished];
+    }
+    else{
         [NetworkAdapter sendRequestWithURL:_imageURL completionHandler:^(NSData *responseData, NSString *errorMsg) {
             UIImage *image = [UIImage imageWithData:responseData];
             if (image) {
@@ -68,6 +79,7 @@
             }
             [self requestFinished];
         }];
+    }
     [self didChangeValueForKey:@"isExecuting"];
 }
 
